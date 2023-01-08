@@ -1,6 +1,8 @@
 package sdf;
 
+import java.security.SecureRandom;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Deck {
 
@@ -17,6 +19,20 @@ public class Deck {
                 Deck.add(card);
             }
         }
+    }
+
+    public void shuffle() {
+
+        Random rand = new SecureRandom();
+
+        for (int i = 0; i < Deck.size(); i++) {
+            int randomNum = rand.nextInt(Deck.size());
+            Card current = Deck.get(i);
+            Card cardToBeSwapped = Deck.get(randomNum);
+            Deck.set(i, cardToBeSwapped);
+            Deck.set(randomNum,current);
+        }
+        
     }
 
     @Override
